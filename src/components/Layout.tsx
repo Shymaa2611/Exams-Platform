@@ -28,7 +28,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                 <Calculator className="w-8 h-8 text-white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">منصة الرياضيات التفاعلية</h1>
+                <h1 className="text-2xl font-bold text-gray-900 hidden md:block" >منصة الرياضيات التفاعلية</h1>
                 <p className="text-sm text-gray-600">
                   {isTeacher ? 'لوحة تحكم المعلمة' : 'منصة الطلاب'}
                 </p>
@@ -36,9 +36,9 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             </div>
 
             <div className="flex items-center space-x-4 space-x-reverse">
-              <div className="flex items-center space-x-2 space-x-reverse">
-                {isTeacher ? <Users className="w-5 h-5 text-blue-600" /> : <BookOpen className="w-5 h-5 text-emerald-600" />}
-                <span className="text-gray-700 font-medium">{studentName}</span>
+              <div className="flex items-center space-x-2 space-x-reverse hidden md:block">
+                {isTeacher ? <Users className="w-5 h-5 text-blue-600 " /> : <BookOpen className="w-5 h-5 text-emerald-600" />}
+                <span className="text-gray-700 font-medium ">{studentName}</span>
               </div>
               <button
                 onClick={logout}

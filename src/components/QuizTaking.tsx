@@ -18,25 +18,25 @@ export const QuizTaking: React.FC<QuizTakingProps> = ({ quiz, onComplete, onCanc
   const [showSuccess, setShowSuccess] = useState(false)
   const [quizScore, setQuizScore] = useState(0)
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev <= 1) {
-          submitQuiz()
-          return 0
-        }
-        return prev - 1
-      })
-    }, 1000)
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setTimeLeft((prev) => {
+  //       if (prev <= 1) {
+  //         submitQuiz()
+  //         return 0
+  //       }
+  //       return prev - 1
+  //     })
+  //   }, 1000)
 
-    return () => clearInterval(timer)
-  }, [])
+  //   return () => clearInterval(timer)
+  // }, [])
 
-  const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60)
-    const secs = seconds % 60
-    return `${mins}:${secs.toString().padStart(2, '0')}`
-  }
+  // const formatTime = (seconds: number) => {
+  //   const mins = Math.floor(seconds / 60)
+  //   const secs = seconds % 60
+  //   return `${mins}:${secs.toString().padStart(2, '0')}`
+  // }
 
   const selectAnswer = (questionIndex: number, answerIndex: number) => {
     const newAnswers = [...answers]
@@ -186,16 +186,16 @@ export const QuizTaking: React.FC<QuizTakingProps> = ({ quiz, onComplete, onCanc
           <button
             onClick={previousQuestion}
             disabled={currentQuestion === 0}
-            className="flex items-center space-x-2 space-x-reverse px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="text-[.7rem] md:text-base lg:text-lg flex items-center space-x-2 space-x-reverse px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 " />
             <span>السابق</span>
           </button>
           
           {currentQuestion < quiz.questions.length - 1 ? (
             <button
               onClick={nextQuestion}
-              className="flex items-center space-x-2 space-x-reverse px-6 py-3 bg-gradient-to-r from-blue-600 to-emerald-600 text-white rounded-lg hover:shadow-lg transition-all"
+              className=" flex items-center space-x-2 space-x-reverse px-6 py-3 bg-gradient-to-r from-blue-600 to-emerald-600 text-white rounded-lg hover:shadow-lg transition-all"
             >
               <span>التالي</span>
               <ArrowLeft className="w-4 h-4" />
@@ -203,7 +203,7 @@ export const QuizTaking: React.FC<QuizTakingProps> = ({ quiz, onComplete, onCanc
           ) : (
             <button
               onClick={() => setShowConfirm(true)}
-              className="px-6 py-3 bg-gradient-to-r from-emerald-600 to-blue-600 text-white rounded-lg hover:shadow-lg transition-all font-bold"
+              className="text-[.7rem] md:text-base lg:text-lg px-6 py-3 bg-gradient-to-r from-emerald-600 to-blue-600 text-white rounded-lg hover:shadow-lg transition-all font-bold"
             >
               إنهاء الامتحان
             </button>
@@ -212,7 +212,7 @@ export const QuizTaking: React.FC<QuizTakingProps> = ({ quiz, onComplete, onCanc
 
         <button
           onClick={onCancel}
-          className="px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+          className="text-[.7rem] md:text-base lg:text-lg px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
         >
           إلغاء الامتحان
         </button>
